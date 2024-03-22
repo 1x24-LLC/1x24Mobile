@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_BASE_URL } from '/src/config';
+import { API_BASE_URL } from "/src/config";
 
 const apiService = axios.create({
   baseURL: API_BASE_URL,
@@ -16,9 +16,6 @@ export const removeAuthToken = () => {
 export const getAuthToken = () => {
   return apiService.defaults.headers.common["Authorization"];
 };
-
-
-
 
 export const apiGet = async (url) => {
   try {
