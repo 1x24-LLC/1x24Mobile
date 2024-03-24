@@ -102,63 +102,84 @@ var pallet = {
 var isDarkTheme = Appearance.getColorScheme() === "dark";
 
 var theme = {
-    MainAccent : isDarkTheme ? pallet.main_dark_accent.DEFAULT : pallet.main_accent.DEFAULT,
-    SecondaryAccent : isDarkTheme ? pallet.secondary_dark_accent.DEFAULT : pallet.secondary_accent.DEFAULT,
-    MainBackground : isDarkTheme ? pallet.dark_background.DEFAULT : pallet.light_background.DEFAULT,
-    SecondaryBackground : isDarkTheme ? pallet.dark_background.DEFAULT : pallet.light_background.DEFAULT,
-    MainLightAccent : isDarkTheme ? pallet.main_accent.DEFAULT : pallet.main_light_accent.DEFAULT,
-    SecondaryLightAccent : isDarkTheme ? pallet.secondary_accent.DEFAULT : pallet.secondary_light_accent.DEFAULT,
-    MainDarkAccent : isDarkTheme ? pallet.main_accent.DEFAULT : pallet.main_dark_accent.DEFAULT,
-    SecondaryDarkAccent : isDarkTheme ? pallet.secondary_accent.DEFAULT : pallet.secondary_dark_accent.DEFAULT,
-}
-
-
+  AccentMain: isDarkTheme
+    ? pallet.main_light_accent.DEFAULT
+    : pallet.main_dark_accent.DEFAULT,
+  AccentSecondary: isDarkTheme
+    ? pallet.secondary_light_accent.DEFAULT
+    : pallet.secondary_dark_accent.DEFAULT,
+  Background: isDarkTheme
+    ? pallet.dark_background.DEFAULT
+    : pallet.light_background.DEFAULT,
+  BrandMain: pallet.main_accent.DEFAULT,
+  BrandSecondary: pallet.secondary_accent.DEFAULT,
+  Text: isDarkTheme
+    ? pallet.main_light_accent.DEFAULT
+    : pallet.main_dark_accent.DEFAULT,
+};
 
 export const GlobalStyles = StyleSheet.create({
-    appContainer: {
-        flex: 1,
-        backgroundColor: pallet.dark_background.DEFAULT,
-        padding: 20,
+  appContainer: {
+    flex: 1,
+    backgroundColor: theme.Background,
+    padding: 0,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  separator: {
+    marginVertical: 30,
+    height: 1,
+    width: "80%",
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+  },
+  button: {
+    alignItems: "center",
+    backgroundColor: "#DDDDDD",
+    padding: 10,
+  },
+  buttonTitle: {
+    fontSize: 20,
+  },
+  shadow: {
+    shadowColor: theme.AccentMain,
+    shadowOffset: {
+      width: 2,
+      height: 2,
     },
-    title: {
-        fontSize: 20,
-        fontWeight: "bold",
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+  },
+  AppHeader: {
+    container: {
+      backgroundColor: theme.Background,
     },
-    separator: {
-        marginVertical: 30,
-        height: 1,
-        width: "80%",
+    iconContainer: {
+      flexDirection: "row", // to align IconButton and Badge in one line
+      justifyContent: "center", // to center them on the main axis
+      alignItems: "center", // to center them on cross-axis
+      //padding: 10, // to give some space around
     },
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
+    badge: {
+      backgroundColor: theme.BrandMain,
+      color: theme.AccentMain,
+      marginLeft: -25, // to give some space between the IconButton and Badge
+      top: -25, // to move the Badge a bit higher
+      //marginTop: 50, // to give some space between the IconButton and Badge
     },
-    button: {
-        alignItems: "center",
-        backgroundColor: "#DDDDDD",
-        padding: 10,
+    logoContainer: {
+      width: 66,
+      height: 32,
     },
-    buttonTitle: {
-        fontSize: 20,
+  },
+  Feed: {
+    container: {
+      flex: 1,
     },
-    AppHeader: {
-        iconContainer: {
-            flexDirection: "row", // to align IconButton and Badge in one line
-            justifyContent: "center", // to center them on the main axis
-            alignItems: "center", // to center them on cross-axis
-            //padding: 10, // to give some space around
-        },
-        badge: {
-            backgroundColor: pallet.main_accent.DEFAULT, 
-            color: pallet.main_light_accent.DEFAULT, 
-            marginLeft: -25, // to give some space between the IconButton and Badge
-            top: -25, // to move the Badge a bit higher
-            //marginTop: 50, // to give some space between the IconButton and Badge
-        },
-        logoContainer: {
-            width: 66,
-            height: 32,
-        },
-    }
+  },
 });
