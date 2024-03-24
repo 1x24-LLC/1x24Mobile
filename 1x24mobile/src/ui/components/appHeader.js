@@ -4,18 +4,19 @@ import { Appbar, Badge, IconButton } from "react-native-paper";
 import { GlobalStyles } from "./../styles/globalStyles";
 
 const AppHeader = () => (
-  <Appbar.Header>
+  <Appbar.Header style={GlobalStyles.AppHeader.container}>
     <IconButton
       icon={({ size }) => (
         <Image
           source={require("./../../../assets/images/logo32.png")}
-          style={ GlobalStyles.AppHeader.logoContainer }
+          style={[GlobalStyles.AppHeader.logoContainer]}
         />
       )}
       size={66}
       onPress={() => {
         alert("Main menu!");
       }}
+      style={[GlobalStyles.AppHeader.logoContainer, GlobalStyles.shadow]}
     />
     <Appbar.Action
       icon="camera"
