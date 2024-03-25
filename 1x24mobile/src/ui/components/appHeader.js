@@ -33,7 +33,7 @@ const AppHeader = () => (
           alert("Messages!");
         }}
       />
-      <Badge style={GlobalStyles.AppHeader.badge}>420</Badge>
+      <Badge style={GlobalStyles.AppHeader.badge}>69</Badge>
     </View>
 
     <Appbar.Action
