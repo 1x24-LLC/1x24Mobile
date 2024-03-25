@@ -159,6 +159,8 @@ export const GlobalStyles = StyleSheet.create({
   AppHeader: {
     container: {
       backgroundColor: theme.Background,
+      flexDirection: "row",
+      justifyContent: "space-between",
     },
     iconContainer: {
       flexDirection: "row",
@@ -168,8 +170,8 @@ export const GlobalStyles = StyleSheet.create({
     badge: {
       backgroundColor: theme.BrandMain,
       color: pallet.main_light_accent.DEFAULT, // Not using the theme color since the badge color is not based on theme
-      marginLeft: -25,
-      top: -25,
+      left: -20,
+      top: -40,
     },
     logoContainer: {
       width: 66,
