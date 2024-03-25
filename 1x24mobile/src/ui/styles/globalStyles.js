@@ -100,6 +100,7 @@ var pallet = {
 };
 
 var isDarkTheme = Appearance.getColorScheme() === "dark";
+console.log("isDarkTheme: " + isDarkTheme);
 
 var theme = {
   AccentMain: isDarkTheme
@@ -160,17 +161,15 @@ export const GlobalStyles = StyleSheet.create({
       backgroundColor: theme.Background,
     },
     iconContainer: {
-      flexDirection: "row", // to align IconButton and Badge in one line
-      justifyContent: "center", // to center them on the main axis
-      alignItems: "center", // to center them on cross-axis
-      //padding: 10, // to give some space around
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
     },
     badge: {
       backgroundColor: theme.BrandMain,
-      color: theme.AccentMain,
-      marginLeft: -25, // to give some space between the IconButton and Badge
-      top: -25, // to move the Badge a bit higher
-      //marginTop: 50, // to give some space between the IconButton and Badge
+      color: pallet.main_light_accent.DEFAULT, // Not using the theme color since the badge color is not based on theme
+      marginLeft: -25,
+      top: -25,
     },
     logoContainer: {
       width: 66,
@@ -180,6 +179,28 @@ export const GlobalStyles = StyleSheet.create({
   Feed: {
     container: {
       flex: 1,
+    },
+  },
+  Card: {
+    container: {
+      width: "100%",
+      height: "100%",
+      flex: 1,
+    },
+    title: {
+      fontSize: 20,
+      fontWeight: "bold",
+      textAlign: "center",
+    },
+    description: {
+      padding: 10,
+    },
+    touchable: {
+      marginRight: 5,
+      marginLeft: 5,
+    },
+    icon: {
+      size: 20,
     },
   },
 });

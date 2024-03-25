@@ -9,7 +9,6 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="src\ui\components\" />
     <Folder Include="src\ui\screens\" />
     <Folder Include="src\ui\styles\" />
   </ItemGroup>
