@@ -29,6 +29,14 @@
       "eas": {
         "projectId": "aaed4e23-3b24-4844-88ba-3733d68d0c57"
       }
-    }
+    },
+    "plugins": [
+      [
+        "expo-secure-store",
+        {
+          "faceIDPermission": "Allow 1x24 to access your Face ID biometric data."
+        }
+      ]
+    ]
   }
 }
