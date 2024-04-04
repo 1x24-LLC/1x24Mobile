@@ -160,7 +160,11 @@ export const GlobalStyles = StyleSheet.create({
         container: {
             backgroundColor: theme.Background,
             flexDirection: 'row',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            width: '90%',
+            height:40,
+            padding: 0,
+            margin: 0
         },
         iconContainer: {
             flexDirection: 'row',
