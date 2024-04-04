@@ -1,45 +1,31 @@
-import axios from "axios";
-import { API_BASE_URL } from "/src/config";
+import { API_BASE_URL } from '/src/config';
+import { jwtGetToken } from '/src/api/jwtService';
 
-const apiService = axios.create({
-  baseURL: API_BASE_URL,
-});
-
-export const setAuthToken = (token) => {
-  apiService.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-};
-
-export const removeAuthToken = () => {
-  delete apiService.defaults.headers.common["Authorization"];
-};
-
-export const getAuthToken = () => {
-  return apiService.defaults.headers.common["Authorization"];
-};
-
-export const apiGet = async (url) => {
-  try {
-    const response = await apiService.get(url);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const apiPost = async (url, body) => {
-  try {
-    const response = await apiService.post(url, body);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const apiDel = async (url) => {
-  try {
-    const response = await apiService.delete(url);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
+export const postData = async (url = '', data = {}, method) => {
+    url = API_BASE_URL + url;
+    // Default options are marked with *
+    try {
+        const response = await fetch(url, {
+            method: method,
+            mode: 'cors',
+            cache: 'no-cache',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json',
+                Authentication: 'Bearer ' + jwtGetToken()
+            },
+            redirect: 'follow',
+            referrerPolicy: 'no-referrer',
+            body: JSON.stringify(data) // body data type must match "Content-Type" header
+        });
+        // Check if the response was ok (status in the range 200-299)
+        if (!response.ok) {
+            // Make the promise be rejected if we cannot resolve the response into a JSON object
+            throw new Error('Network response was not ok');
+        }
+        return await response.json();
+    } catch (error) {
+        // Handle errors that occur during the fetch
+        console.error('There was a problem with your fetch operation:', error);
+    }
 };
