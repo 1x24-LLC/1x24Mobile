@@ -52,6 +52,9 @@ export default function Main() {
                                 <Stack.Screen
                                     name="Account.Login"
                                     component={LoginScreen}
+                                    options={{
+                                        title: 'Login'
+                                    }}
                                 />
                             </Stack.Navigator>
                         </NavigationContainer>

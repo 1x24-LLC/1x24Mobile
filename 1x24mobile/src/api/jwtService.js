@@ -5,7 +5,6 @@ const jwtTokenName = 'secureJwtToken';
 
 export const jwtSetToken = async (token) => {
     try {
-        console.log('Setting token: ' + token);
         await SecureStore.setItemAsync(jwtTokenName, token);
         return;
     } catch (error) {
@@ -16,8 +15,6 @@ export const jwtSetToken = async (token) => {
 export const jwtGetToken = async () => {
     try {
         let token = await SecureStore.getItemAsync(jwtTokenName);
-
-        console.log('Token is ' + token);
 
         if (
             token == undefined ||
@@ -35,7 +32,6 @@ export const jwtGetToken = async () => {
 
         return token;
     } catch (error) {
-        console.error('Ah shit ' + error);
         throw error;
     }
 };
@@ -53,7 +49,6 @@ export const jwtRefreshToken = async (token) => {
         let data = {
             jwtToken: tokenValue
         };
-        console.log('Refreshing token: ' + json.stringify(data));
 
         return fetch(url, {
             method: 'POST',
@@ -67,14 +62,12 @@ export const jwtRefreshToken = async (token) => {
             body: JSON.stringify(data)
         })
             .then((response) => {
-                console.log(json.stringify('response is: ' + response));
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 return response.json();
             })
             .then((json) => {
-                console.log(json.stringify('json is: ' + json));
                 let newToken = json.token;
                 jwtSetToken(newToken);
                 return newToken;
@@ -96,4 +89,9 @@ export const isJwtTokenExpired = async (token) => {
     } catch (error) {
         return true;
     }
+};
+
+export const jwtKillToken = async () => {
+    await SecureStore.deleteItemAsync(jwtTokenName);
+    return;
 };

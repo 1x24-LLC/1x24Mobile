@@ -24,7 +24,6 @@ export const postData = async (url = '', data = {}, method) => {
         // Check if the response was ok (status in the range 200-299)
         if (!response.ok) {
             // Make the promise be rejected if we cannot resolve the response into a JSON object
-            console.log(JSON.stringify(response));
 
             if (response.status === 401) {
                 console.log('Unauthorized');
