@@ -5,65 +5,128 @@ import FeedCard from './feedCard';
 import { GlobalStyles } from './../styles/globalStyles';
 
 const Feed = ({ navigation }) => (
-    <PagerView style={GlobalStyles.Feed.container} initialPage={0}>
-        <View style={GlobalStyles.Card.container} key="1">
+    <PagerView
+        style={GlobalStyles.Feed.container}
+        initialPage={0}
+    >
+        <View
+            style={GlobalStyles.Card.container}
+            key="1"
+        >
             <FeedCard />
         </View>
-        <View style={GlobalStyles.Card.container} key="2">
+        <View
+            style={GlobalStyles.Card.container}
+            key="2"
+        >
             <FeedCard />
         </View>
-        <View style={GlobalStyles.Card.container} key="3">
+        <View
+            style={GlobalStyles.Card.container}
+            key="3"
+        >
             <FeedCard />
         </View>
-        <View style={GlobalStyles.Card.container} key="4">
+        <View
+            style={GlobalStyles.Card.container}
+            key="4"
+        >
             <FeedCard />
         </View>
-        <View style={GlobalStyles.Card.container} key="5">
+        <View
+            style={GlobalStyles.Card.container}
+            key="5"
+        >
             <FeedCard />
         </View>
-        <View style={GlobalStyles.Card.container} key="6">
+        <View
+            style={GlobalStyles.Card.container}
+            key="6"
+        >
             <FeedCard />
         </View>
-        <View style={GlobalStyles.Card.container} key="7">
+        <View
+            style={GlobalStyles.Card.container}
+            key="7"
+        >
             <FeedCard />
         </View>
-        <View style={GlobalStyles.Card.container} key="8">
+        <View
+            style={GlobalStyles.Card.container}
+            key="8"
+        >
             <FeedCard />
         </View>
-        <View style={GlobalStyles.Card.container} key="9">
+        <View
+            style={GlobalStyles.Card.container}
+            key="9"
+        >
             <FeedCard />
         </View>
-        <View style={GlobalStyles.Card.container} key="10">
+        <View
+            style={GlobalStyles.Card.container}
+            key="10"
+        >
             <FeedCard />
         </View>
-        <View style={GlobalStyles.Card.container} key="11">
+        <View
+            style={GlobalStyles.Card.container}
+            key="11"
+        >
             <FeedCard />
         </View>
-        <View style={GlobalStyles.Card.container} key="12">
+        <View
+            style={GlobalStyles.Card.container}
+            key="12"
+        >
             <FeedCard />
         </View>
-        <View style={GlobalStyles.Card.container} key="13">
+        <View
+            style={GlobalStyles.Card.container}
+            key="13"
+        >
             <FeedCard />
         </View>
-        <View style={GlobalStyles.Card.container} key="14">
+        <View
+            style={GlobalStyles.Card.container}
+            key="14"
+        >
             <FeedCard />
         </View>
-        <View style={GlobalStyles.Card.container} key="15">
+        <View
+            style={GlobalStyles.Card.container}
+            key="15"
+        >
             <FeedCard />
         </View>
-        <View style={GlobalStyles.Card.container} key="16">
+        <View
+            style={GlobalStyles.Card.container}
+            key="16"
+        >
             <FeedCard />
         </View>
-        <View style={GlobalStyles.Card.container} key="17">
+        <View
+            style={GlobalStyles.Card.container}
+            key="17"
+        >
             <FeedCard />
         </View>
-        <View style={GlobalStyles.Card.container} key="18">
+        <View
+            style={GlobalStyles.Card.container}
+            key="18"
+        >
             <FeedCard />
         </View>
-        <View style={GlobalStyles.Card.container} key="19">
+        <View
+            style={GlobalStyles.Card.container}
+            key="19"
+        >
             <FeedCard />
         </View>
-        <View style={GlobalStyles.Card.container} key="20">
+        <View
+            style={GlobalStyles.Card.container}
+            key="20"
+        >
             <FeedCard />
         </View>
     </PagerView>
