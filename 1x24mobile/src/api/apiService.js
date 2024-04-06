@@ -3,7 +3,10 @@ import { jwtGetToken } from './jwtService';
 
 export const postData = async (url = '', data = {}, method) => {
     url = API_BASE_URL + url;
-    // Default options are marked with *
+    jwtToken = jwtGetToken();
+
+    console.log(method + 'ing to ' + url + ' data ' + JSON.stringify(data));
+
     try {
         const response = await fetch(url, {
             method: method,
@@ -12,7 +15,7 @@ export const postData = async (url = '', data = {}, method) => {
             credentials: 'same-origin',
             headers: {
                 'Content-Type': 'application/json',
-                Authentication: 'Bearer ' + jwtGetToken()
+                ...(jwtToken !== '' && { Authentication: 'Bearer ' + jwtToken })
             },
             redirect: 'follow',
             referrerPolicy: 'no-referrer',
@@ -21,8 +24,13 @@ export const postData = async (url = '', data = {}, method) => {
         // Check if the response was ok (status in the range 200-299)
         if (!response.ok) {
             // Make the promise be rejected if we cannot resolve the response into a JSON object
-            throw new Error('Network response was not ok');
+            console.log(JSON.stringify(response));
+
+            if (response.status === 401) {
+                console.log('Unauthorized');
+            }
         }
+
         return await response.json();
     } catch (error) {
         // Handle errors that occur during the fetch
