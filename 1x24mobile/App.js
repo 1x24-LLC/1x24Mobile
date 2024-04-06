@@ -10,6 +10,7 @@ import {
 
 import AppHeader from './src/ui/components/appHeader';
 import Feed from './src/ui/components/feed';
+import LoginScreen from './src/ui/screens/account/loginScreen';
 import { GlobalStyles } from './src/ui/styles/globalStyles';
 
 const theme = {
@@ -39,13 +40,19 @@ export default function Main() {
                                 <Stack.Screen
                                     name="Home"
                                     component={Feed}
-                                    options={{
+                                    options={({ navigation }) => ({
                                         headerTitle: (props) => (
-                                            <AppHeader {...props} />
+                                            <AppHeader
+                                                {...props}
+                                                navigation={navigation}
+                                            />
                                         )
-                                    }}
+                                    })}
                                 />
-                                {/*<Stack.Screen name="Account.Login" component={ProfileScreen} />*/}
+                                <Stack.Screen
+                                    name="Account.Login"
+                                    component={LoginScreen}
+                                />
                             </Stack.Navigator>
                         </NavigationContainer>
                     </SafeAreaView>

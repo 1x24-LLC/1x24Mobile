@@ -5,7 +5,7 @@ import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 import IconMaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { GlobalStyles } from './../styles/globalStyles';
 
-const AppHeader = () => (
+const AppHeader = ({ navigation }) => (
     <View style={GlobalStyles.AppHeader.container}>
         <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity style={GlobalStyles.Card.touchable}>
@@ -28,7 +28,13 @@ const AppHeader = () => (
                 />
                 <Badge style={GlobalStyles.AppHeader.badge}>69</Badge>
             </TouchableOpacity>
-            <TouchableOpacity style={GlobalStyles.Card.touchable}>
+            <TouchableOpacity
+                style={GlobalStyles.Card.touchable}
+                onPress={() => {
+                    console.log('Login button pressed');
+                    navigation.navigate('Account.Login');
+                }}
+            >
                 <IconMaterialCommunityIcons name="login" size={32} />
             </TouchableOpacity>
         </View>

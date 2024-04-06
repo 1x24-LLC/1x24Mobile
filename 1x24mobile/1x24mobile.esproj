@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.586930">
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.586930">
   <PropertyGroup>
     <StartupCommand>npm run dev</StartupCommand>
     <JavaScriptTestRoot>src\</JavaScriptTestRoot>
@@ -9,7 +9,7 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="src\ui\screens\" />
-    <Folder Include="src\ui\styles\" />
+    <None Remove="%25ProgramData%25\**" />
+    <TypeScriptConfiguration Remove="%25ProgramData%25\**" />
   </ItemGroup>
 </Project>

@@ -1,5 +1,5 @@
-import { API_BASE_URL } from '/src/config';
-import { jwtGetToken } from '/src/api/jwtService';
+import { API_BASE_URL } from './../config';
+import { jwtGetToken } from './jwtService';
 
 export const postData = async (url = '', data = {}, method) => {
     url = API_BASE_URL + url;

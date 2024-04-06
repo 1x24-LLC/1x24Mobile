@@ -1,5 +1,5 @@
 import * as SecureStore from 'expo-secure-store';
-import { API_BASE_URL } from '/src/config';
+import { API_BASE_URL } from './../config';
 
 const jwtTokenName = 'secureJwtToken';
 
