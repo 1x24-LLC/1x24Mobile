@@ -8,5 +8,6 @@
     "bracketSpacing": true,
     "jsxBracketSameLine": false,
     "semi": true,
-    "singleAttributePerLine": true
+    "singleAttributePerLine": true,
+    "endOfLine": "crlf"
 }
