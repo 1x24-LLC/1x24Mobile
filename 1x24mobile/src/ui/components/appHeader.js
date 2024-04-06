@@ -17,7 +17,10 @@ const AppHeader = ({ navigation }) => (
         </View>
         <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity style={GlobalStyles.Card.touchable}>
-                <IconFontAwesome name="camera-retro" size={32} />
+                <IconFontAwesome
+                    name="camera-retro"
+                    size={32}
+                />
             </TouchableOpacity>
         </View>
         <View style={{ flexDirection: 'row' }}>
@@ -35,7 +38,10 @@ const AppHeader = ({ navigation }) => (
                     navigation.navigate('Account.Login');
                 }}
             >
-                <IconMaterialCommunityIcons name="login" size={32} />
+                <IconMaterialCommunityIcons
+                    name="login"
+                    size={32}
+                />
             </TouchableOpacity>
         </View>
     </View>

@@ -41,8 +41,14 @@ const LoginScreen = () => {
                 autoCapitalize="none"
                 style={GlobalStyles.input}
             />
-            <Button title="Login" onPress={handleLoginPress} />
-            <Button title="Create Account" onPress={handleCreateAccountPress} />
+            <Button
+                title="Login"
+                onPress={handleLoginPress}
+            />
+            <Button
+                title="Create Account"
+                onPress={handleCreateAccountPress}
+            />
 
             <TouchableOpacity onPress={handleForgotPasswordPress}>
                 <Text>Forgot Password?</Text>

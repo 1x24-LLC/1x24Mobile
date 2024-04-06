@@ -68,7 +68,11 @@ const FeedCardMenu = () => {
                     />
                 </TouchableOpacity>
                 <TouchableOpacity style={GlobalStyles.Card.touchable}>
-                    <IconsFontisto name="heart-alt" size={24} color="#000" />
+                    <IconsFontisto
+                        name="heart-alt"
+                        size={24}
+                        color="#000"
+                    />
                 </TouchableOpacity>
             </View>
         </View>
