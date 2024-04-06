@@ -8,15 +8,16 @@ export const loginUser = (username, password) => {
         password: password
     };
 
-    console.log('Logging in user', dataToPost);
+    JwtService.jwtKillToken();
 
-    ApiService.postData(apiURL, dataToPost, 'POST').then((data) => {
+    return ApiService.postData(apiURL, dataToPost, 'POST').then((data) => {
         if (data.token == undefined) {
             console.log('Login failed');
-            return;
+            return false;
         }
 
-        console.log('Login response', data);
+        console.log('Login succeeded');
         JwtService.jwtSetToken(data.token);
+        return true;
     });
 };

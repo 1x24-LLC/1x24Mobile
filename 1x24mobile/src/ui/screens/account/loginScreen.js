@@ -4,24 +4,57 @@ import { View, TextInput, Button, Text, TouchableOpacity } from 'react-native';
 import * as LoginApi from './../../../api/accountApi';
 import { GlobalStyles } from '../../styles/globalStyles';
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [loginFailed, setLoginFailed] = useState(false);
+    const [usernameError, setUsernameError] = useState(null);
+    const [passwordError, setPasswordError] = useState(null);
 
-    const handleLoginPress = () => {
-        // Implement login logic here
-        console.log('Login pressed', { username, password });
-        LoginApi.loginUser(username, password);
+    const handleLoginPress = async () => {
+        let isValid = validateForm();
+
+        console.log('isValid: ' + isValid);
+
+        if (isValid) {
+            console.log('Logging in user');
+            let loginSuccess = await LoginApi.loginUser(username, password);
+
+            if (loginSuccess) {
+                navigation.navigate('Home');
+            }
+
+            setLoginFailed(() => !loginSuccess);
+            console.log('Login success: ' + loginSuccess);
+        }
     };
 
     const handleCreateAccountPress = () => {
-        // Navigate to create account screen or logic
         console.log('Create Account pressed');
     };
 
     const handleForgotPasswordPress = () => {
-        // Navigate to forgot password screen or logic
         console.log('Forgot Password pressed');
+    };
+
+    const validateForm = () => {
+        let isValid = true;
+        console.log('Validating form');
+        if (username.trim() === '') {
+            isValid = false;
+            setUsernameError(() => 'Username required.');
+        } else {
+            setUsernameError(() => null);
+        }
+
+        if (password.trim() === '') {
+            isValid = false;
+            setPasswordError(() => 'Password required.');
+        } else {
+            setPasswordError(() => null);
+        }
+
+        return isValid;
     };
 
     return (
@@ -33,6 +66,10 @@ const LoginScreen = () => {
                 autoCapitalize="none"
                 style={GlobalStyles.input}
             />
+            {!!usernameError && (
+                <Text style={{ color: 'red' }}>{usernameError}</Text>
+            )}
+
             <TextInput
                 placeholder="Password"
                 value={password}
@@ -41,6 +78,12 @@ const LoginScreen = () => {
                 autoCapitalize="none"
                 style={GlobalStyles.input}
             />
+            {!!passwordError && (
+                <Text style={{ color: 'red' }}>{passwordError}</Text>
+            )}
+
+            {loginFailed && <Text style={{ color: 'red' }}>Login failed</Text>}
+
             <Button
                 title="Login"
                 onPress={handleLoginPress}
@@ -50,9 +93,10 @@ const LoginScreen = () => {
                 onPress={handleCreateAccountPress}
             />
 
-            <TouchableOpacity onPress={handleForgotPasswordPress}>
-                <Text>Forgot Password?</Text>
-            </TouchableOpacity>
+            <Button
+                title="Forgot Password?"
+                onPress={handleForgotPasswordPress}
+            />
         </View>
     );
 };
