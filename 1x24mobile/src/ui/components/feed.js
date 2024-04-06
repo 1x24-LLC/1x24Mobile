@@ -4,7 +4,7 @@ import PagerView from 'react-native-pager-view';
 import FeedCard from './feedCard';
 import { GlobalStyles } from './../styles/globalStyles';
 
-const Feed = () => (
+const Feed = ({ navigation }) => (
     <PagerView style={GlobalStyles.Feed.container} initialPage={0}>
         <View style={GlobalStyles.Card.container} key="1">
             <FeedCard />

@@ -137,7 +137,9 @@ export const GlobalStyles = StyleSheet.create({
     input: {
         height: 40,
         margin: 12,
-        borderWidth: 1
+        borderWidth: 1,
+        padding: 10,
+        borderRadius: 5
     },
     button: {
         alignItems: 'center',
@@ -162,7 +164,7 @@ export const GlobalStyles = StyleSheet.create({
             flexDirection: 'row',
             justifyContent: 'space-between',
             width: '90%',
-            height:40,
+            height: 40,
             padding: 0,
             margin: 0
         },
