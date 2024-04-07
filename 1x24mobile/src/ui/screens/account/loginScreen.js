@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, Text, TouchableOpacity } from 'react-native';
 
-import * as LoginApi from './../../../api/accountApi';
 import { GlobalStyles } from '../../styles/globalStyles';
+import { useUser } from './../../../userContext';
 
 const LoginScreen = ({ navigation }) => {
+    const { user, signIn, signOut } = useUser();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loginFailed, setLoginFailed] = useState(false);
@@ -12,28 +13,25 @@ const LoginScreen = ({ navigation }) => {
     const [passwordError, setPasswordError] = useState(null);
 
     const handleLoginPress = async () => {
-        let isValid = validateForm();
-
-        console.log('isValid: ' + isValid);
-
-        if (isValid) {
-            console.log('Logging in user');
-            let loginSuccess = await LoginApi.loginUser(username, password);
+        if (validateForm()) {
+            let loginSuccess = await signIn(username, password);
+            console.log('Login was successful: ' + loginSuccess);
 
             if (loginSuccess) {
                 navigation.navigate('Home');
             }
 
             setLoginFailed(() => !loginSuccess);
-            console.log('Login success: ' + loginSuccess);
         }
     };
 
     const handleCreateAccountPress = () => {
+        // todo: navigate to create account screen
         console.log('Create Account pressed');
     };
 
     const handleForgotPasswordPress = () => {
+        // todo: navigate to forgot password screen
         console.log('Forgot Password pressed');
     };
 

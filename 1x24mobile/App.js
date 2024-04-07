@@ -8,6 +8,7 @@ import {
     Provider as PaperProvider
 } from 'react-native-paper';
 
+import { UserProvider } from './src/userContext';
 import AppHeader from './src/ui/components/appHeader';
 import Feed from './src/ui/components/feed';
 import LoginScreen from './src/ui/screens/account/loginScreen';
@@ -28,38 +29,40 @@ export default function Main() {
     return (
         <SafeAreaProvider>
             <PaperProvider theme={theme}>
-                <View style={GlobalStyles.appContainer}>
-                    <SafeAreaView
-                        style={[
-                            GlobalStyles.appContainer,
-                            { paddingTop: 'safe' }
-                        ]} // Adjusted for clarity, you will implement dynamic padding inside the component
-                    >
-                        <NavigationContainer>
-                            <Stack.Navigator>
-                                <Stack.Screen
-                                    name="Home"
-                                    component={Feed}
-                                    options={({ navigation }) => ({
-                                        headerTitle: (props) => (
-                                            <AppHeader
-                                                {...props}
-                                                navigation={navigation}
-                                            />
-                                        )
-                                    })}
-                                />
-                                <Stack.Screen
-                                    name="Account.Login"
-                                    component={LoginScreen}
-                                    options={{
-                                        title: 'Login'
-                                    }}
-                                />
-                            </Stack.Navigator>
-                        </NavigationContainer>
-                    </SafeAreaView>
-                </View>
+                <UserProvider>
+                    <View style={GlobalStyles.appContainer}>
+                        <SafeAreaView
+                            style={[
+                                GlobalStyles.appContainer,
+                                { paddingTop: 'safe' }
+                            ]} // Adjusted for clarity, you will implement dynamic padding inside the component
+                        >
+                            <NavigationContainer>
+                                <Stack.Navigator>
+                                    <Stack.Screen
+                                        name="Home"
+                                        component={Feed}
+                                        options={({ navigation }) => ({
+                                            headerTitle: (props) => (
+                                                <AppHeader
+                                                    {...props}
+                                                    navigation={navigation}
+                                                />
+                                            )
+                                        })}
+                                    />
+                                    <Stack.Screen
+                                        name="Account.Login"
+                                        component={LoginScreen}
+                                        options={{
+                                            title: 'Login'
+                                        }}
+                                    />
+                                </Stack.Navigator>
+                            </NavigationContainer>
+                        </SafeAreaView>
+                    </View>
+                </UserProvider>
             </PaperProvider>
         </SafeAreaProvider>
     );

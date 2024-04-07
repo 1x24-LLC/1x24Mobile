@@ -34,7 +34,6 @@ const AppHeader = ({ navigation }) => (
             <TouchableOpacity
                 style={GlobalStyles.Card.touchable}
                 onPress={() => {
-                    console.log('Login button pressed');
                     navigation.navigate('Account.Login');
                 }}
             >
