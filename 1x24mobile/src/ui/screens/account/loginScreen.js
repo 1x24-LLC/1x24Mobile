@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Text, TouchableOpacity } from 'react-native';
+import {
+    View,
+    TextInput,
+    Button,
+    Pressable,
+    Text,
+    TouchableOpacity
+} from 'react-native';
 
 import { GlobalStyles } from '../../styles/globalStyles';
 import { useUser } from './../../../userContext';
@@ -26,8 +33,8 @@ const LoginScreen = ({ navigation }) => {
     };
 
     const handleCreateAccountPress = () => {
-        // todo: navigate to create account screen
         console.log('Create Account pressed');
+        navigation.navigate('Account.Create');
     };
 
     const handleForgotPasswordPress = () => {
@@ -82,10 +89,13 @@ const LoginScreen = ({ navigation }) => {
 
             {loginFailed && <Text style={{ color: 'red' }}>Login failed</Text>}
 
-            <Button
-                title="Login"
+            <Pressable
+                style={GlobalStyles.button}
                 onPress={handleLoginPress}
-            />
+            >
+                <Text style={GlobalStyles.buttonText}>Login</Text>
+            </Pressable>
+
             <Button
                 title="Create Account"
                 onPress={handleCreateAccountPress}

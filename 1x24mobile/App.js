@@ -12,6 +12,7 @@ import { UserProvider } from './src/userContext';
 import AppHeader from './src/ui/components/appHeader';
 import Feed from './src/ui/components/feed';
 import LoginScreen from './src/ui/screens/account/loginScreen';
+import CreateAccountScreen from './src/ui/screens/account/createAccountScreen';
 import { GlobalStyles } from './src/ui/styles/globalStyles';
 
 const theme = {
@@ -56,6 +57,13 @@ export default function Main() {
                                         component={LoginScreen}
                                         options={{
                                             title: 'Login'
+                                        }}
+                                    />
+                                    <Stack.Screen
+                                        name="Account.Create"
+                                        component={CreateAccountScreen}
+                                        options={{
+                                            title: 'Create Account'
                                         }}
                                     />
                                 </Stack.Navigator>

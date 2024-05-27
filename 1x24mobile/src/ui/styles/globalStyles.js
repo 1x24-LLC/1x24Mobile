@@ -130,9 +130,10 @@ export const GlobalStyles = StyleSheet.create({
         fontWeight: 'bold'
     },
     separator: {
-        marginVertical: 30,
-        height: 1,
-        width: '80%'
+        borderBottomColor: 'black',
+        borderBottomWidth: 1,
+        marginVertical: 20,
+        marginHorizontal: '15%'
     },
     input: {
         height: 40,
@@ -143,8 +144,20 @@ export const GlobalStyles = StyleSheet.create({
     },
     button: {
         alignItems: 'center',
-        backgroundColor: '#DDDDDD',
-        padding: 10
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        borderRadius: 4,
+        elevation: 3,
+        backgroundColor: theme.AccentMain,
+        marginHorizontal: 10
+    },
+    buttonText: {
+        fontSize: 16,
+        lineHeight: 21,
+        fontWeight: 'bold',
+        letterSpacing: 0.25,
+        color: theme.Background
     },
     buttonTitle: {
         fontSize: 20

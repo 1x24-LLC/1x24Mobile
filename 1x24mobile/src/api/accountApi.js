@@ -36,3 +36,39 @@ export const getCurrentUser = async () => {
         });
     });
 };
+
+export const isDisplayNameAvailable = ApiService.debounce(
+    (displayName, callback) => {
+        const apiURL = '/check/displayname/' + displayName;
+        ApiService.getData(apiURL).then((data) => {
+            callback(data.isAvailable);
+        });
+    },
+    500
+);
+
+export const isEmailAvailable = ApiService.debounce(
+    (email, allowPartial, callback) => {
+        console.log(
+            'Checking email availability for: ' + email + ' - ' + allowPartial
+        );
+
+        // Regular expression for email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (emailRegex.test(email)) {
+            console.log('Email is valid, checking availability');
+            const apiURL = '/check/email/' + email;
+            ApiService.getData(apiURL).then((data) => {
+                callback(data.isAvailable);
+            });
+        } else if (allowPartial) {
+            console.log("Email is not valid but we're allowing partials");
+            callback(true);
+        } else {
+            console.log('Email is not valid');
+            callback(false);
+        }
+    },
+    500
+);

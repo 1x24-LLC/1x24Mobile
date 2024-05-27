@@ -56,3 +56,15 @@ export const getData = async (url = '') => {
         console.error('There was a problem with your GET operation:', error);
     }
 };
+
+export const debounce = (func, wait) => {
+    let timeout;
+    return (...args) => {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+};
